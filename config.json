@@ -1,0 +1,33 @@
+{
+  "common_schema": {
+    "date": "날짜",
+    "product_name": "제품명",
+    "product_code": "제품코드", 
+    "quantity": "수량",
+    "unit_price": "단가",
+    "total_amount": "총액",
+    "customer_name": "고객명",
+    "customer_id": "고객ID",
+    "sales_rep": "영업담당자",
+    "region": "지역"
+  },
+  "validation_rules": {
+    "required_fields": ["date", "product_name", "quantity", "unit_price", "total_amount"],
+    "data_types": {
+      "quantity": "numeric",
+      "unit_price": "numeric", 
+      "total_amount": "numeric",
+      "date": "date"
+    },
+    "business_rules": {
+      "total_amount_check": "quantity * unit_price should equal total_amount",
+      "quantity_min": 0,
+      "unit_price_min": 0
+    }
+  },
+  "default_llm": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "base_url": "https://api.openai.com/v1"
+  }
+}
