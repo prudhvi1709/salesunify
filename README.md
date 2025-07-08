@@ -112,15 +112,15 @@ record_number,source_file,fix_timestamp,original_errors,field_changed,original_v
 
 ```mermaid
 flowchart TD
-    A[Click "Load Sample Data"] --> B{API Key Configured?}
-    B -->|No| C[Show Warning: Configure API First]
-    B -->|Yes| D[Fetch sampledata.xlsx]
-    D --> E[Read Excel with Pyodide]
-    E --> F[Translate Korean Headers via LLM]
-    F --> G[Validate Each Record]
-    G --> H[Separate Valid vs Exception Records]
-    H --> I[Show Results Dashboard]
-    I --> J[Ready for Auto-Fix Testing!]
+    A["Click Load Sample Data"] --> B{"API Key Configured?"}
+    B -->|No| C["Show Warning: Configure API First"]
+    B -->|Yes| D["Fetch sampledata.xlsx"]
+    D --> E["Read Excel with Pyodide"]
+    E --> F["Translate Korean Headers via LLM"]
+    F --> G["Validate Each Record"]
+    G --> H["Separate Valid vs Exception Records"]
+    H --> I["Show Results Dashboard"]
+    I --> J["Ready for Auto-Fix Testing!"]
     
     style A fill:#e1f5fe
     style J fill:#e8f5e8
