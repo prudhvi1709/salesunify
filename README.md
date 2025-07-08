@@ -121,10 +121,6 @@ flowchart TD
     G --> H["Separate Valid vs Exception Records"]
     H --> I["Show Results Dashboard"]
     I --> J["Ready for Auto-Fix Testing!"]
-    
-    style A fill:#e1f5fe
-    style J fill:#e8f5e8
-    style C fill:#ffebee
 ```
 
 ## Getting Started
