@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Excel Sales Data Consolidator</title>
+    <title>Sales Unifier</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link rel="icon" href="https://raw.githubusercontent.com/gramener/assets/main/straive-favicon.svg" />
@@ -12,7 +12,7 @@
     <div class="container-fluid py-4">
       <header class="text-center mb-4">
         <h1 class="display-4 text-primary">
-          <i class="fas fa-file-excel me-2"></i>Excel Sales Data Consolidator
+          <i class="fas fa-file-excel me-2"></i>Sales Unifier
         </h1>
         <p class="lead text-muted">AI-powered Korean Excel processing with zero exceptions</p>
       </header>
@@ -35,13 +35,13 @@
                   <div class="col-md-6">
                     <label for="llm-provider" class="form-label">Provider</label>
                     <select id="llm-provider" class="form-select">
-                      <option value="openai">OpenAI</option>
                       <option value="custom">Custom Provider</option>
+                      <option value="openai">OpenAI</option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     <label for="llm-model" class="form-label">Model</label>
-                    <input type="text" id="llm-model" class="form-control" value="gpt-4o-mini" />
+                    <input type="text" id="llm-model" class="form-control" value="gpt-4.1-mini" />
                   </div>
                   <div class="col-md-6">
                     <label for="api-key" class="form-label">API Key</label>
@@ -49,7 +49,7 @@
                   </div>
                   <div class="col-md-6">
                     <label for="base-url" class="form-label">Base URL</label>
-                    <input type="url" id="base-url" class="form-control" value="https://api.openai.com/v1" />
+                    <input type="url" id="base-url" class="form-control" value="https://llmfoundry.straive.com/v1" />
                   </div>
                 </div>
                 <button id="save-config" class="btn btn-primary mt-3">

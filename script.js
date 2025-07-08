@@ -35,7 +35,7 @@ const config = {
     elements.llmProvider.value = cfg.provider || 'openai';
     elements.llmModel.value = cfg.model || 'gpt-4o-mini';
     elements.apiKey.value = cfg.apiKey || '';
-    elements.baseUrl.value = cfg.baseUrl || 'https://api.openai.com/v1';
+    elements.baseUrl.value = cfg.baseUrl || 'https://llmfoundry.straive.com/v1';
   },
   
   save() {
@@ -407,6 +407,28 @@ const updateResults = () => {
   document.getElementById('total-records').textContent = consolidatedData.length + exceptionRecords.length;
   document.getElementById('valid-records').textContent = consolidatedData.length;
   document.getElementById('exception-records').textContent = exceptionRecords.length;
+  
+  // Enable/disable export buttons based on exception status
+  const hasExceptions = exceptionRecords.length > 0;
+  const hasData = consolidatedData.length > 0;
+  
+  elements.exportData.disabled = hasExceptions || !hasData;
+  elements.exportFixes.disabled = fixHistory.length === 0;
+  
+  // Update export button text and styling
+  if (hasExceptions) {
+    elements.exportData.innerHTML = '<i class="fas fa-lock me-2"></i>Export All Data (Fix Exceptions First)';
+    elements.exportData.classList.remove('btn-primary');
+    elements.exportData.classList.add('btn-secondary');
+  } else if (hasData) {
+    elements.exportData.innerHTML = '<i class="fas fa-download me-2"></i>Export All Data';
+    elements.exportData.classList.remove('btn-secondary');
+    elements.exportData.classList.add('btn-primary');
+  } else {
+    elements.exportData.innerHTML = '<i class="fas fa-download me-2"></i>Export All Data';
+    elements.exportData.classList.remove('btn-primary');
+    elements.exportData.classList.add('btn-secondary');
+  }
   
   elements.resultsSection.classList.remove('d-none');
   
@@ -785,6 +807,18 @@ elements.processFiles.addEventListener('click', async () => {
 
 elements.exportData.addEventListener('click', exportConsolidatedData);
 elements.exportFixes.addEventListener('click', exportFixHistory);
+
+// Handle provider dropdown change
+elements.llmProvider.addEventListener('change', (e) => {
+  const provider = e.target.value;
+  if (provider === 'openai') {
+    elements.baseUrl.value = 'https://api.openai.com/v1';
+    elements.llmModel.value = 'gpt-4.1-mini';
+  } else if (provider === 'custom') {
+    elements.baseUrl.value = 'https://llmfoundry.straive.com/v1';
+    elements.llmModel.value = 'gpt-4.1-mini';
+  }
+});
 
 // Auto-fix All Records
 elements.autoFixAll.addEventListener('click', async () => {
