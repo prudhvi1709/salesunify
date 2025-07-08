@@ -108,13 +108,38 @@ record_number,source_file,fix_timestamp,original_errors,field_changed,original_v
 - **Error Recovery**: Graceful handling of individual record failures
 - **Export Options**: Multiple CSV formats for different use cases
 
+## Sample Data Processing Flow
+
+```mermaid
+flowchart TD
+    A[Click "Load Sample Data"] --> B{API Key Configured?}
+    B -->|No| C[Show Warning: Configure API First]
+    B -->|Yes| D[Fetch sampledata.xlsx]
+    D --> E[Read Excel with Pyodide]
+    E --> F[Translate Korean Headers via LLM]
+    F --> G[Validate Each Record]
+    G --> H[Separate Valid vs Exception Records]
+    H --> I[Show Results Dashboard]
+    I --> J[Ready for Auto-Fix Testing!]
+    
+    style A fill:#e1f5fe
+    style J fill:#e8f5e8
+    style C fill:#ffebee
+```
+
 ## Getting Started
 
+### Quick Demo
 1. Open `index.html` in a modern web browser
 2. Configure LLM provider (first time only - panel auto-opens)
-3. Upload Korean Excel files and click "Process Files"
-4. Use "Auto-fix All" for bulk correction of exceptions
-5. Review changes in Fix History section
-6. Export consolidated data or detailed change log
+3. Click **"Load Sample Data"** for instant demonstration
+4. Test auto-fix functionality on the loaded exceptions
+5. Export results to see the complete workflow
+
+### Production Use
+1. Upload Korean Excel files and click "Process Files"
+2. Use "Auto-fix All" for bulk correction of exceptions
+3. Review changes in Fix History section
+4. Export consolidated data or detailed change log
 
 Perfect for teams processing Korean sales data who need standardized reporting with complete transparency and audit trails for all AI-driven corrections.
