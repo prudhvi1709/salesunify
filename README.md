@@ -139,3 +139,5 @@ flowchart TD
 4. Export consolidated data or detailed change log
 
 Perfect for teams processing Korean sales data who need standardized reporting with complete transparency and audit trails for all AI-driven corrections.
+---
+> **This is Demo. contains no confidential data/IP**
